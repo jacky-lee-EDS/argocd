@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
-  namespace: nginx-helloworld
+  labels:
+    app: nginx
 spec:
   replicas: 3
   selector:
@@ -15,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: quay.io/ellery/hello-nginx:v0.6
+        image: nginx:latest
         ports:
-        - containerPort: 8081
+        - containerPort: 80
 
