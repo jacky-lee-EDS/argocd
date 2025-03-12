@@ -13,6 +13,8 @@ spec:
       labels:
         app: nginx
     spec:
+      securityContext:
+        runAsUser: 0
       containers:
       - name: nginx
         image: nginx:latest
