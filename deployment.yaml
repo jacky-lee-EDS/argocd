@@ -21,6 +21,6 @@ spec:
         ports:
         - containerPort: 80
         securityContext:
-          runAsUser: 0  # 使容器以 root 用戶運行
-          fsGroup: 0     # 設置文件系統的群組權限
+          runAsGroup: 101  
+          runAsUser: 101     
 
