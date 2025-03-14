@@ -15,23 +15,14 @@ spec:
       labels:
         app: nginx
     spec:
-      securityContext:
-        fsGroup: 1001350000  # 設定 fsGroup，OpenShift 會調整權限
       containers:
       - name: nginx
-        image: quay.io/ellery/hello-nginx:v0.6
-        securityContext:
-          allowPrivilegeEscalation: false
-          runAsNonRoot: true
+        image: quay.io/jacky_lee_eds/nginx:1.27.4  # 確保使用 unprivileged 版本
         ports:
         - containerPort: 80
         volumeMounts:
         - mountPath: /var/cache/nginx
           name: nginx-cache
-        command: ["/bin/sh", "-c"]
-        args:
-          - mkdir -p /var/cache/nginx/client_temp && 
-            exec nginx -g 'daemon off;'
       volumes:
       - name: nginx-cache
-        emptyDir: {}
+        emptyDir: {}  # OpenShift 會自動處理權限
