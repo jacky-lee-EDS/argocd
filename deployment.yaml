@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: quay.io/ellery/hello-nginx:v0.6
+        image: quay.io/jacky_lee_eds/nginx:1.27.4
         ports:
         - containerPort: 80
         volumeMounts:
