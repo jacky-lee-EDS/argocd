@@ -16,13 +16,13 @@ spec:
         app: nginx
     spec:
       securityContext:
-        fsGroup: 1001350000  # 修改為 OpenShift 允許的範圍
+        fsGroup: 1001350000  # 設定 fsGroup，OpenShift 會調整權限
       containers:
       - name: nginx
         image: quay.io/ellery/hello-nginx:v0.6
         securityContext:
           allowPrivilegeEscalation: false
-          runAsNonRoot: true  # 移除 runAsUser，讓 OpenShift 自動設定
+          runAsNonRoot: true
         ports:
         - containerPort: 80
         volumeMounts:
@@ -31,7 +31,6 @@ spec:
         command: ["/bin/sh", "-c"]
         args:
           - mkdir -p /var/cache/nginx/client_temp && 
-            chmod -R 777 /var/cache/nginx && 
             exec nginx -g 'daemon off;'
       volumes:
       - name: nginx-cache
