@@ -16,14 +16,13 @@ spec:
         app: nginx
     spec:
       securityContext:
-        runAsNonRoot: true
-        fsGroup: 101
+        fsGroup: 1001350000  # 修改為 OpenShift 允許的範圍
       containers:
       - name: nginx
         image: quay.io/ellery/hello-nginx:v0.6
         securityContext:
           allowPrivilegeEscalation: false
-          runAsUser: 101
+          runAsNonRoot: true  # 移除 runAsUser，讓 OpenShift 自動設定
         ports:
         - containerPort: 80
         volumeMounts:
