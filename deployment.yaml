@@ -20,6 +20,12 @@ spec:
         image: quay.io/ellery/hello-nginx:v0.6
         ports:
         - containerPort: 80
+        volumeMounts:
+      - mountPath: /var/cache/nginx
+        name: nginx-cache
+      volumes:
+      - name: nginx-cache
+        emptyDir: {}  
 #        securityContext:
 #          runAsGroup: 0
 #          runAsUser: 0
