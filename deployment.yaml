@@ -19,7 +19,7 @@ spec:
       - name: nginx
         image: quay.io/jacky_lee_eds/nginx:1.27.4  # 確保使用 unprivileged 版本
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         volumeMounts:
         - mountPath: /var/cache/nginx
           name: nginx-cache
