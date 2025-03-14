@@ -20,7 +20,7 @@ spec:
         image: quay.io/ellery/hello-nginx:v0.6
         ports:
         - containerPort: 80
-        securityContext:
-          runAsGroup: 0
-          runAsUser: 0
+#        securityContext:
+#          runAsGroup: 0
+#          runAsUser: 0
 
