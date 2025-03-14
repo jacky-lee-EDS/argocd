@@ -20,7 +20,7 @@ spec:
         image: quay.io/jacky_lee_eds/nginx:1.27.4
         ports:
         - containerPort: 80
-#        securityContext:
-#          runAsGroup: 101
-#          runAsUser: 101
+        securityContext:
+          runAsGroup: 0
+          runAsUser: 0
 
